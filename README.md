@@ -7,10 +7,19 @@ The idea of the project is to send a URL to the backend, short the URL, and send
 ## How the project is currently
 In development...
 
+## To run the project using Docker
+1. Make sure you have `docker` and `docker-compose` installed;
+1. Create the `.env` file using as a base the `.env.example` file;
+2. Run in the terminal inside the project root folder the command below: 
+  ```
+    docker-compose up -d
+  ```
+> PS: The project will be running at the port you define in the .env file. 
+
 ## Technologies
 1. NodeJS
-2. GraphQL
-3. Typescript
+2. GraphQL 
+3. Typescript 
 4. Apollo Server
 5. Postgress
 6. Docker
