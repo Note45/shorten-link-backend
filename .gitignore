@@ -1,2 +1,5 @@
 # Packages files
 node_modules
+
+# Enviroment File
+.env

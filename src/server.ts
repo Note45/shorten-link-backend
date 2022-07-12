@@ -4,6 +4,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 import express from 'express';
 import { buildSchema } from 'type-graphql';
 import { UrlResolver } from './resolvers/Url';
+import { enviroments } from './configs/enviroments';
 
 const init = async () => {
   const schema = await buildSchema({
@@ -25,7 +26,7 @@ const init = async () => {
 
   graphqlServer.applyMiddleware({ app });
 
-  app.listen({ port: 3333 }, () =>
+  app.listen({ port: enviroments.port }, () =>
     console.log(
       `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`
     )
