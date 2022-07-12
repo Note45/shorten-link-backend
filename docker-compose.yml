@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: shorten-link
+    restart: always
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/usr/src/app/
+    env_file: .env
+    networks:
+      - node-shorten-network
+networks:
+  node-shorten-network:
+    driver: bridge
