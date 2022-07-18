@@ -4,6 +4,7 @@
 # -----------------------------------------------
 
 input CreateUrlInput {
+  customName: String
   originalUrl: String!
 }
 

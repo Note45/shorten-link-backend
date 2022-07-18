@@ -1,8 +1,10 @@
 import { Field, InputType } from "type-graphql";
-import { Url } from "../../entities/Url";
 
 @InputType()
-export class CreateUrlInput implements Partial<Url>{
+export class CreateUrlInput  {
   @Field(() => String)
   originalUrl: String; 
+
+  @Field(() => String, { nullable: true })
+  customName?: String;
 }

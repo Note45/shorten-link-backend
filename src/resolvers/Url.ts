@@ -23,10 +23,15 @@ export class UrlResolver {
 
   @Mutation(() => Url)
   async createUrlShorted(
-    @Arg('data', () => CreateUrlInput) { originalUrl }: CreateUrlInput
+    @Arg('data', () => CreateUrlInput) { originalUrl, customName }: CreateUrlInput
   ): Promise<Url>{
     const newUrlId = this.urls.length.toString();
-    const shortedUrl = `${newUrlId}.com`;
+    const shortedUrl = `${customName ? customName : newUrlId}.com`;
+
+    const customUrlAlreadyCreated = this.urls.find(url => url.shortedUrl === shortedUrl);
+    if (customUrlAlreadyCreated) {
+      return customUrlAlreadyCreated;
+    }
 
     const url = new Url();
     Object.assign(url, {
