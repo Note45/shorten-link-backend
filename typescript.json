@@ -21,9 +21,9 @@
       "emitDecoratorMetadata": true,
       "strict": false,
       "experimentalDecorators": true,
-      "outDir": "dist",
-      "rootDir": "src",
-      "baseUrl": ".",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "baseUrl": "./",
       "paths": {
           "*": [
               "node_modules/*",
