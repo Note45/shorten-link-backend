@@ -18,7 +18,9 @@ type Query {
 
 """The URL model"""
 type Url {
+  created_at: String!
   id: ID!
   originalUrl: String!
   shortedUrl: String!
+  update_at: String!
 }
