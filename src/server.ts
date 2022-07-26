@@ -6,7 +6,11 @@ import { buildSchema } from 'type-graphql';
 import { UrlResolver } from './resolvers/Url';
 import { enviroments } from './configs/enviroments';
 
+import createConnection from "./database"
+
 const init = async () => {
+  createConnection();
+
   const schema = await buildSchema({
     resolvers: [
       UrlResolver
