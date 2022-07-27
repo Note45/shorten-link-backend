@@ -1,18 +1,17 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { UrlRepository } from "../database/repositories/implementations/UrlRepository";
 import { Url } from "../entities/Url";
 import { CreateUrlInput } from "./types/UrlInput";
 
-@Resolver(of => Url)
+@Resolver(_of => Url)
 export class UrlResolver {
-  private urls: Url[] = [];
+  private urlRepository: UrlRepository = new UrlRepository();
 
   @Query((_returns) => Url, { nullable: false })
   async getOriginalUrl(
-    @Arg('shortedUrl', () => String) shortedUrl: String
+    @Arg('shortenUrl', () => String) shortenUrl: string
   ): Promise<Url> {
-    const originalUrlId = shortedUrl.split('.')[0];
-
-    const url = this.urls.find(url => url.id === originalUrlId);
+    const url = await this.urlRepository.findByShortenUrl(shortenUrl);
 
     if (!url) {
       throw new Error('Original url not found!');
@@ -25,22 +24,22 @@ export class UrlResolver {
   async createUrlShorted(
     @Arg('data', () => CreateUrlInput) { originalUrl, customName }: CreateUrlInput
   ): Promise<Url>{
-    const newUrlId = this.urls.length.toString();
-    const shortedUrl = `${customName ? customName : newUrlId}.com`;
+    let newUrlId;
+    if (!customName) {
+      newUrlId = await this.urlRepository.getNewUrlIndex();
+    }
 
-    const customUrlAlreadyCreated = this.urls.find(url => url.shortedUrl === shortedUrl);
+    const shortenUrl = `${customName ? customName : newUrlId}.com`;
+
+    const customUrlAlreadyCreated = await this.urlRepository.findByShortenUrl(shortenUrl);
     if (customUrlAlreadyCreated) {
       return customUrlAlreadyCreated;
     }
 
-    const url = new Url();
-    Object.assign(url, {
-      id: newUrlId,
-      shortedUrl,
-      originalUrl
-    })
-
-    this.urls.push(url);
+    const url = await this.urlRepository.create(
+      originalUrl,
+      shortenUrl
+    );
 
     return url;
   }
