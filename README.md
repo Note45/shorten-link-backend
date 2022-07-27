@@ -25,5 +25,5 @@ In development...
 6. Docker
 
 ## Initial Requirements:
-1. [ ] - The user can send a link to be shortened.
-2. [ ] - The user can send a shortened link to get the original link.
+1. [X] - The user can send a link to be shortened.
+2. [X] - The user can send a shortened link to get the original link.
