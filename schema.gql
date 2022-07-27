@@ -8,6 +8,11 @@ input CreateUrlInput {
   originalUrl: String!
 }
 
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
 type Mutation {
   createUrlShorted(data: CreateUrlInput!): Url!
 }
@@ -18,9 +23,9 @@ type Query {
 
 """The URL model"""
 type Url {
-  createdAt: String!
+  createdAt: DateTime!
   id: ID!
   originalUrl: String!
   shortenUrl: String!
-  updatedAt: String!
+  updatedAt: DateTime!
 }

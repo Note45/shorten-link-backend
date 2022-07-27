@@ -23,11 +23,11 @@ export class Url {
   @Column()
   shortenUrl: string;
 
-  @Field(() => String)
+  @Field(() => Date)
   @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 
-  @Field(() => String)
+  @Field(() => Date)
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
 
