@@ -20,13 +20,14 @@ export class CreateUrls1658328907698 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "shortedUrl",
+            name: "shortenUrl",
             type: "varchar",
           },
           {
             name: "updated_at",
             type: "timestamp",
             default: "now()",
+            onUpdate: "now()"
           },
           {
             name: "created_at",
