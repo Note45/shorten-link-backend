@@ -14,7 +14,7 @@ export class UrlResolver {
     const url = await this.urlRepository.findByShortenUrl(shortenUrl);
 
     if (!url) {
-      throw new Error('Original url not found!');
+      throw new Error('Original url was not found!');
     }
 
     return url;
