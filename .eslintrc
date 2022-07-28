@@ -10,13 +10,15 @@
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "extends": [
     "airbnb-base",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "settings": {
     "import/resolver": {
@@ -41,5 +43,6 @@
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" },
     ],
+    "prettier/prettier": 2 // Means error
   }
 }
