@@ -1,38 +1,38 @@
-import { ObjectType, Field, ID } from "type-graphql";
-import { 
-  Column, 
-  CreateDateColumn, 
-  Entity, 
+import { ObjectType, Field, ID } from 'type-graphql';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
   PrimaryColumn,
-  UpdateDateColumn 
+  UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
 @ObjectType({ description: 'The URL model' })
-@Entity("urls")
+@Entity('urls')
 export class Url {
   @Field(() => ID)
   @PrimaryColumn()
-  id?: string;
+    id?: string;
 
   @Field(() => String)
   @Column()
-  originalUrl: string; 
+    originalUrl: string;
 
   @Field(() => String)
   @Column()
-  shortenUrl: string;
+    shortenUrl: string;
 
   @Field(() => Date)
-  @CreateDateColumn({ name: "created_at" })
-  createdAt: Date;
+  @CreateDateColumn({ name: 'created_at' })
+    createdAt: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ name: "updated_at" })
-  updatedAt: Date;
+  @UpdateDateColumn({ name: 'updated_at' })
+    updatedAt: Date;
 
   constructor() {
-    if(!this.id) {
+    if (!this.id) {
       this.id = uuidV4();
     }
   }

@@ -1,10 +1,10 @@
-import { Field, InputType } from "type-graphql";
+import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class CreateUrlInput  {
+export class CreateUrlInput {
   @Field(() => String)
-  originalUrl: string; 
+    originalUrl: string;
 
   @Field(() => String, { nullable: true })
-  customName?: string;
+    customName?: string;
 }

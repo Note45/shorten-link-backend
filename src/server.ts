@@ -6,14 +6,14 @@ import { buildSchema } from 'type-graphql';
 import { UrlResolver } from './resolvers/Url';
 import { enviroments } from './configs/enviroments';
 
-import createConnection from "./database"
+import createConnection from './database';
 
 const init = async () => {
   createConnection();
 
   const schema = await buildSchema({
     resolvers: [
-      UrlResolver
+      UrlResolver,
     ],
     emitSchemaFile: true,
     validate: false,
@@ -21,7 +21,7 @@ const init = async () => {
 
   const graphqlServer = new ApolloServer({
     schema,
-    plugins: [ ApolloServerPluginLandingPageGraphQLPlayground ],
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   });
 
   const app = express();
@@ -30,13 +30,15 @@ const init = async () => {
 
   graphqlServer.applyMiddleware({ app });
 
-  app.listen({ port: enviroments.port }, () =>
+  app.listen({ port: enviroments.port }, () => {
+    // eslint-disable-next-line no-console
     console.log(
-      `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`
-    )
-  );
+      `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`,
+    );
+  });
 };
 
 init().catch((error) => {
+  // eslint-disable-next-line no-console
   console.log('Erro when try run ther server: ', error);
 });
