@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -13,23 +13,23 @@ import { v4 as uuidV4 } from 'uuid';
 export class Url {
   @Field(() => ID)
   @PrimaryColumn()
-    id?: string;
+  id?: string;
 
   @Field(() => String)
   @Column()
-    originalUrl: string;
+  originalUrl: string;
 
   @Field(() => String)
   @Column()
-    shortenUrl: string;
+  shortenUrl: string;
 
   @Field(() => Date)
   @CreateDateColumn({ name: 'created_at' })
-    createdAt: Date;
+  createdAt: Date;
 
   @Field(() => Date)
   @UpdateDateColumn({ name: 'updated_at' })
-    updatedAt: Date;
+  updatedAt: Date;
 
   constructor() {
     if (!this.id) {

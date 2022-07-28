@@ -12,16 +12,14 @@ const init = async () => {
   createConnection();
 
   const schema = await buildSchema({
-    resolvers: [
-      UrlResolver,
-    ],
+    resolvers: [UrlResolver],
     emitSchemaFile: true,
-    validate: false,
+    validate: false
   });
 
   const graphqlServer = new ApolloServer({
     schema,
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground]
   });
 
   const app = express();
@@ -33,7 +31,7 @@ const init = async () => {
   app.listen({ port: enviroments.port }, () => {
     // eslint-disable-next-line no-console
     console.log(
-      `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`,
+      `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`
     );
   });
 };

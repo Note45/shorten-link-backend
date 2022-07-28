@@ -1,6 +1,4 @@
-import {
-  Arg, Mutation, Query, Resolver,
-} from 'type-graphql';
+import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { UrlRepository } from '../database/repositories/implementations/UrlRepository';
 import { Url } from '../entities/Url';
 import { CreateUrlInput } from './types/UrlInput';
@@ -11,7 +9,7 @@ export class UrlResolver {
 
   @Query((_returns) => Url, { nullable: false })
   async getOriginalUrl(
-    @Arg('shortenUrl', () => String) shortenUrl: string,
+    @Arg('shortenUrl', () => String) shortenUrl: string
   ): Promise<Url> {
     const url = await this.urlRepository.findByShortenUrl(shortenUrl);
 
@@ -24,7 +22,8 @@ export class UrlResolver {
 
   @Mutation(() => Url)
   async createUrlShorted(
-    @Arg('data', () => CreateUrlInput) { originalUrl, customName }: CreateUrlInput,
+    @Arg('data', () => CreateUrlInput)
+    { originalUrl, customName }: CreateUrlInput
   ): Promise<Url> {
     let newUrlId;
     if (!customName) {
@@ -33,15 +32,14 @@ export class UrlResolver {
 
     const shortenUrl = `${customName || newUrlId}.com`;
 
-    const customUrlAlreadyCreated = await this.urlRepository.findByShortenUrl(shortenUrl);
+    const customUrlAlreadyCreated = await this.urlRepository.findByShortenUrl(
+      shortenUrl
+    );
     if (customUrlAlreadyCreated) {
       return customUrlAlreadyCreated;
     }
 
-    const url = await this.urlRepository.create(
-      originalUrl,
-      shortenUrl,
-    );
+    const url = await this.urlRepository.create(originalUrl, shortenUrl);
 
     return url;
   }

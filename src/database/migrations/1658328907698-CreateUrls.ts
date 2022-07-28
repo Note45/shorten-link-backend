@@ -1,8 +1,4 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateUrls1658328907698 implements MigrationInterface {
   // eslint-disable-next-line class-methods-use-this
@@ -14,29 +10,29 @@ export class CreateUrls1658328907698 implements MigrationInterface {
           {
             name: 'id',
             type: 'uuid',
-            isPrimary: true,
+            isPrimary: true
           },
           {
             name: 'originalUrl',
-            type: 'varchar',
+            type: 'varchar'
           },
           {
             name: 'shortenUrl',
-            type: 'varchar',
+            type: 'varchar'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
-            onUpdate: 'now()',
+            onUpdate: 'now()'
           },
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'now()',
-          },
-        ],
-      }),
+            default: 'now()'
+          }
+        ]
+      })
     );
   }
 
