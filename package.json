@@ -14,7 +14,13 @@
     "migration:run": "ts-node ./node_modules/typeorm/cli migration:run",
     "lint:verify": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prepare": "husky install && husky add .husky/pre-commit 'yarn prettier:fix && yarn lint:verify'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier:fix && yarn lint:verify"
+    }
   },
   "dependencies": {
     "apollo-server-core": "^3.9.0",
@@ -41,6 +47,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "ts-node": "^10.8.2",
