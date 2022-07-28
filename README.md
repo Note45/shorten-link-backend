@@ -23,7 +23,13 @@ In development...
 4. Apollo Server
 5. Postgress
 6. Docker
+7. ESLint
+8. Prettier
+9. Husk
 
 ## Initial Requirements:
 1. [X] - The user can send a link to be shortened.
 2. [X] - The user can send a shortened link to get the original link.
+
+## Future Requirements
+1. [X] - The user can send a custom name to create the shortened link.
