@@ -1,11 +1,16 @@
+import { container } from 'tsyringe';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { UrlRepository } from '../database/repositories/implementations/UrlRepository';
+import { IUrlRepository } from '../database/repositories/IUrlRepository';
 import { Url } from '../entities/Url';
 import { CreateUrlInput } from './types/UrlInput';
 
 @Resolver((_of) => Url)
 export class UrlResolver {
-  private urlRepository: UrlRepository = new UrlRepository();
+  private urlRepository: IUrlRepository;
+
+  constructor() {
+    this.urlRepository = container.resolve('UrlRepository');
+  }
 
   @Query((_returns) => Url, { nullable: false })
   async getOriginalUrl(

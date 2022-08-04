@@ -1,7 +1,9 @@
+import { injectable } from 'tsyringe';
 import { getRepository, Repository } from 'typeorm';
 import { Url } from '../../../entities/Url';
 import { IUrlRepository } from '../IUrlRepository';
 
+@injectable()
 export class UrlRepository implements IUrlRepository {
   private readonly repository: Repository<Url>;
 
