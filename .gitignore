@@ -3,6 +3,3 @@ node_modules
 
 # Enviroment File
 .env
-
-# Husk config files
-.husky
