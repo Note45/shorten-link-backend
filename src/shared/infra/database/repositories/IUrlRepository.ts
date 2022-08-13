@@ -1,4 +1,4 @@
-import { Url } from '../../entities/Url';
+import { Url } from '../../../../modules/url/entities/Url';
 
 export interface IUrlRepository {
   findByShortenUrl(shortenUrl: string): Promise<Url | undefined>;

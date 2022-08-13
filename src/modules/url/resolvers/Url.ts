@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { IUrlRepository } from '../database/repositories/IUrlRepository';
+import { IUrlRepository } from '../../../shared/infra/database/repositories/IUrlRepository';
 import { Url } from '../entities/Url';
 import { CreateUrlInput } from './types/UrlInput';
 
