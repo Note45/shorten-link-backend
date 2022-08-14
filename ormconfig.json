@@ -5,7 +5,7 @@
   "username": "docker",
   "password": "docker",
   "database": "shorten-link",
-  "entities": ["./src/entities/*.ts"],
+  "entities": ["./src/modules/url/entities/*.ts"],
   "migrations": ["./src/shared/infra/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/shared/infra/database/migrations"
