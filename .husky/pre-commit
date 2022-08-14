@@ -3,7 +3,3 @@
 
 npx lint-staged
 yarn prettier:fix && yarn lint:verify
-yarn prettier:fix && yarn lint:verify
-yarn prettier:fix && yarn lint:verify
-yarn prettier:fix && yarn lint:verify
-yarn prettier:fix && yarn lint:verify
