@@ -1,7 +1,7 @@
 module.exports = {
-  roots: ['<rootDir>/tests'],
+  roots: ['tests'],
   moduleNameMapper: {
-    '@test/(.*)': '<rootDir>/tests/$1'
+    '@test/(.*)': 'tests/$1'
   },
   moduleFileExtensions: ['ts', 'js', 'json'],
   coveragePathIgnorePatterns: [
@@ -24,5 +24,5 @@ module.exports = {
       lines: 50
     }
   },
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}']
+  collectCoverageFrom: ['src/**/*.{js,ts}']
 };
