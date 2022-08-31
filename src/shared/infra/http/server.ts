@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
@@ -30,7 +31,7 @@ const init = async () => {
   graphqlServer.applyMiddleware({ app });
 
   app.listen({ port: enviroments.port }, () => {
-    // eslint-disable-next-line no-console
+    console.log(`Server running on mode: ${enviroments.mode}`);
     console.log(
       `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`
     );
