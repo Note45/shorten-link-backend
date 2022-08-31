@@ -40,7 +40,4 @@ const defaultOptions = {
   }
 } as ConnectionOptions;
 
-console.log(JSON.stringify(defaultOptions));
-console.log(enviroments.isTestMode);
-
 export default defaultOptions;
