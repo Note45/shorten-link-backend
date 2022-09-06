@@ -20,6 +20,8 @@ const defaultOptions = {
       '..',
       'modules',
       'url',
+      'infra',
+      'typeorm',
       'entities',
       '*.ts'
     )
@@ -34,6 +36,8 @@ const defaultOptions = {
       '..',
       'modules',
       'url',
+      'infra',
+      'typeorm',
       'entities'
     ),
     migrationsDir: path.join(__dirname, '..', 'migrations')
