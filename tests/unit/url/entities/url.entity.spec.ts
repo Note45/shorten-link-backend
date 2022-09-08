@@ -2,7 +2,7 @@ import { Url } from '../../../../src/modules/url/infra/typeorm/entities/Url';
 
 describe('[MODULE/URL/INFRA/TYPEORM/ENTITIES]', () => {
   describe('[HAPPY-PATH]', () => {
-    it('should be able to create url entities with defined id', async () => {
+    it('should be able to create url entity with defined id', async () => {
       const url = new Url();
       const urlMock = {
         originalUrl: 'http://test-url.com.br',
