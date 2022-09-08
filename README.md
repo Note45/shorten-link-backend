@@ -26,6 +26,8 @@ In development...
 7. ESLint
 8. Prettier
 9. Husk
+10. Jest 
+11. Supertest
 
 ## Initial Requirements:
 1. [X] - The user can send a link to be shortened.
@@ -33,4 +35,4 @@ In development...
 
 ## Future Requirements
 1. [X] - The user can send a custom name to create the shortened link.
-1. [X] - Automated tests in the project.
+2. [X] - Automated tests in the project.
