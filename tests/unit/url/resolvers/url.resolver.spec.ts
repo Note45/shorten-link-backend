@@ -29,6 +29,29 @@ describe('[MODULE/URL/RESOLVERS]', () => {
       expect(resolverResult).toBe(urlMock);
     });
 
+    it('should be able to create a shoted url already created', async () => {
+      const urlParams = {
+        originalUrl: 'http://test-url.com.br',
+        customName: 'test'
+      };
+      const urlMock = {
+        originalUrl: urlParams.originalUrl,
+        shortenUrl: `${urlParams.customName}.com`,
+        id: '0166d67c-86d7-46d2-9181-8418128e47ad',
+        createdAt: '2022-09-08T16:15:27.763Z',
+        updatedAt: '2022-09-08T16:15:27.763Z'
+      };
+
+      jest.spyOn(container, 'resolve').mockImplementationOnce(() => ({
+        findByShortenUrl: () => urlMock
+      }));
+
+      const urlResolver = new UrlResolver();
+      const resolverResult = await urlResolver.createUrlShorted(urlParams);
+
+      expect(resolverResult).toBe(urlMock);
+    });
+
     it('should be able to create a shoted url without custom name', async () => {
       const urlParam = {
         originalUrl: 'http://test-url.com.br'
