@@ -5,9 +5,9 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'json'],
   coveragePathIgnorePatterns: [
-    'dist',
-    'src/server.ts',
-    'src/database/migrations/*.ts'
+    '<rootDir>/dist',
+    '<rootDir>/node_modules',
+    '<rootDir>/src/shared'
   ],
   preset: 'ts-jest',
   transform: {

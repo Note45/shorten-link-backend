@@ -1,7 +1,7 @@
 import supertest, { SuperTest, Test } from 'supertest';
 import { Connection, Repository } from 'typeorm';
-import { Url } from '../../../src/modules/url/entities/Url';
 import getDdConection from '../../../src/shared/infra/database';
+import { Url } from '../../../src/modules/url/infra/typeorm/entities/Url';
 
 describe('[MODULE/URL] - Url module', () => {
   let superTestServer: SuperTest<Test>;
