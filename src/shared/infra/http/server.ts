@@ -1,13 +1,14 @@
+/* eslint-disable no-console */
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import express from 'express';
 import { buildSchema } from 'type-graphql';
-import { UrlResolver } from './resolvers/Url';
-import { enviroments } from './configs/enviroments';
+import { UrlResolver } from '../../../modules/url/resolvers/Url';
+import { enviroments } from '../../configs/enviroments';
 
-import './container';
-import createConnection from './database';
+import '../../container';
+import createConnection from '../database';
 
 const init = async () => {
   createConnection();
@@ -30,7 +31,7 @@ const init = async () => {
   graphqlServer.applyMiddleware({ app });
 
   app.listen({ port: enviroments.port }, () => {
-    // eslint-disable-next-line no-console
+    console.log(`Server running on mode: ${enviroments.mode}`);
     console.log(
       `Server ready and listening at ==> http://localhost:3333${graphqlServer.graphqlPath}`
     );

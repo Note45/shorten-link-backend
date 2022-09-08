@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { IUrlRepository } from '../database/repositories/IUrlRepository';
-import { Url } from '../entities/Url';
+import { IUrlRepository } from '../repositories/IUrlRepository';
+import { Url } from '../infra/typeorm/entities/Url';
 import { CreateUrlInput } from './types/UrlInput';
 
 @Resolver((_of) => Url)

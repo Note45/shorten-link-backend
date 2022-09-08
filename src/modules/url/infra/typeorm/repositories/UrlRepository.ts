@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe';
 import { getRepository, Repository } from 'typeorm';
-import { Url } from '../../../entities/Url';
-import { IUrlRepository } from '../IUrlRepository';
+import { Url } from '../entities/Url';
+import { IUrlRepository } from '../../../repositories/IUrlRepository';
 
 @injectable()
 export class UrlRepository implements IUrlRepository {

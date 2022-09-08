@@ -29,12 +29,9 @@ services:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=shorten-link
     volumes:
-      - pgdata:/data/postgres
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
     networks:
       - node-shorten-network
-volumes:
-  pgdata:
-    driver: local
 networks:
   node-shorten-network:
     driver: bridge
