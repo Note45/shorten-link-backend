@@ -33,3 +33,4 @@ In development...
 
 ## Future Requirements
 1. [X] - The user can send a custom name to create the shortened link.
+1. [X] - Automated tests in the project.
