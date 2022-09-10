@@ -1,0 +1,56 @@
+name: DEV - Run build and tests
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 14.x
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Use Node.js ${{ matrix.node-version }}'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ matrix.node-version }}'
+      - name: Install Packages
+        run: yarn install
+      - name: Build project
+        run: yarn build
+  test:
+    env:
+      NODE_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup env
+        run: |
+          echo "PROJECT_ROOT=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
+          echo "PROJECT_NAME=combine" >> $GITHUB_ENV
+          echo "${GITHUB_WORKSPACE}/bin" >> $GITHUB_PATH
+
+      - name: Start docker containers
+        run: |
+          echo "VERSION=$(versioninfo)" >> $GITHUB_ENV
+          docker-compose up --build --detach
+          sleep 10  # wait for database to be ready
+          docker-compose run shorten-link npm migration:run
+
+      - name: Run backend unit and integration tests
+        run: |
+          docker-compose run shorten-link npm test
+
+      - if: always()
+        uses: ouzi-dev/commit-status-updater@v1.1.0
+        with:
+          name: "Run tests"
+          status: "${{ job.status }}"
