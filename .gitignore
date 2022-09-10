@@ -1,8 +1,8 @@
 # Packages files
 node_modules
 
-# Enviroment File
-.env
+# Enviroment Production File
+.env.production
 
 # Jest Coverage report
 coverage
