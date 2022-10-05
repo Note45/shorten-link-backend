@@ -35,8 +35,8 @@ jobs:
 
       - name: Start docker containers
         run: |
-          docker-compose up --build --detach
-          sleep 40  # wait for database to be ready
+          docker-compose up -d
+          sleep 20  # wait for database to be ready
           docker-compose logs app
           docker ps -a
           docker-compose run app yarn migration:run
