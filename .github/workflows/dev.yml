@@ -37,6 +37,7 @@ jobs:
         run: |
           docker-compose up -d
           sleep 40  # wait for database to be ready
+          docker-compose logs shorten-link
           docker exec shorten-link yarn install
           docker exec shorten-link yarn migration:run
           docker exec shorten-link yarn migration-test:run
