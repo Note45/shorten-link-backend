@@ -37,12 +37,13 @@ jobs:
         run: |
           docker-compose up -d
           sleep 20  # wait for database to be ready
-          docker-compose run app yarn install
-          docker-compose run app yarn migration:run
+          docker exec -it shorten-link yarn install
+          docker exec -it shorten-link yarn migration:run
+          docker exec -it shorten-link yarn migration-test:run
 
       - name: Run backend unit and integration tests
         run: |
-          docker-compose run app yarn test
+          docker exec -it shorten-link yarn test
 
       - if: always()
         uses: ouzi-dev/commit-status-updater@v1.1.0
