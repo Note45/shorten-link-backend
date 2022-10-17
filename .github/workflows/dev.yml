@@ -37,7 +37,7 @@ jobs:
         run: |
           docker-compose up -d
           sleep 20  
-          docker-compose exec shorten-link yarn 
+          docker-compose exec -T shorten-link yarn 
           docker-compose logs shorten-link
           docker exec shorten-link yarn migration:run
           docker exec shorten-link yarn migration-test:run
