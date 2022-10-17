@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "tsc -p .",
     "start:dev": "export NODE_ENV=development && ts-node-dev --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "start:dev-test": "export NODE_ENV=test && ts-node-dev --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "test": "export NODE_ENV=test && jest --forceExit --runInBand --noStackTrace",

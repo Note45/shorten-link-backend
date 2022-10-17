@@ -61,6 +61,7 @@ describe('[MODULE/URL/INFRA/TYPEORM/REPOSITORIES]', () => {
         ...originalTypeormMethods,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         create: async (_params: any) => urlMock,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         save: async (_params: any) => urlMock
       }));
 

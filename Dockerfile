@@ -4,9 +4,9 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/
-RUN npm install
+RUN yarn install
 COPY . /usr/src/app
 
 EXPOSE 3333 
 
-CMD ["npm", "run", "start:dev-test"]
+CMD ["yarn", "start:dev-test"]
