@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Packages
-      run: yarn install
+        run: yarn install
 
       - name: Start docker containers
         run: |
