@@ -28,6 +28,7 @@ In development...
 9. Husk
 10. Jest 
 11. Supertest
+11. Github Actions
 
 ## Initial Requirements:
 1. [X] - The user can send a link to be shortened.
