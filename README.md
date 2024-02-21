@@ -5,7 +5,7 @@ Repository to store the backend files to Shorten Link project. A URL shortener.
 The idea of the project is to send a URL to the backend, short the URL, and send the response with the URL shortener. Also, the backend can receive a shortener URL and response with the original URL. 
 
 ## How the project is currently
-Is finalized.
+It's finished.
 
 ## To run the project using Docker
 1. Make sure you have `docker` and `docker-compose` installed;
